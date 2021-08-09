@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <title>Interfaz ML - Rodrigo Leo</title>
+  <link rel="stylesheet" href="{{ estilo }}">
+  </head>
+  <body>
+    <h1>Interfaz ML</h1>
+    <p class="nombre">Rodrigo Leo, 2021 (<a href="https://github.com/r-leo/proyecto-python" target="_blank">GitHub</a>)</p>
+
+    <h2>Salida</h2>
+
+    <p>Este es el dígito que el algoritmo predice usando tu entrada manuscrita, ¿acertó?</p>
+
+    <div class="fila">
+      <div>
+        <img src="{{ imagen }}" style="height: 70px;">
+      </div>
+      <div>
+        <span class="igual">&nbsp;=&nbsp;</span>
+      </div>
+      <div>
+        <span class="estimador">{{ estimador }}</span>
+      </div>
+    </div>
+
+    <div class="fila">
+      <button id="back-button" class="regresar" type="button">Regresar</button>
+    </div>
+
+    <h2>Matriz de identificación</h2>
+
+    <p>El algoritmo no puede "ver" la imagen, pues no tiene ojos. Lo que hace es dividir el dígito manuscrito en 64 cuadrantes (una cuadrícula de 8 por 8) y asignar a cada cuadrante un número del 0 al 16, dependiendo del número de píxeles que contiene. El resultado es una matriz (la llamamos \(\lambda\)) que el algoritmo está entrenado para identificar.</p>
+
+    <p>Para el dígito que escribiste, la matriz \(\lambda\) correspondiente es la siguiente:</p>
+
+    <p>$$ \lambda = \begin{pmatrix}
+    {% for row in array %}
+      {% for x in range(0, 8) %}
+        {% if x < 7 %}
+          {{ row[x] }} &
+        {% endif %}
+        {% if x == 7 %}
+          {{ row[x] }}
+        {% endif %}
+      {% endfor %}
+      \\
+    {% endfor %}
+    \end{pmatrix}$$</p>
+
+    <p>Si miras con atención, puedes verificar (visualmente) que las áreas más oscuras de la imagen corresponden a los valores más altos en la matriz (si dibujas un 1 esto se hace muy evidente).</p>
+
+    <script>
+      const backButton = document.getElementById('back-button')
+      function handleBackButtonClick(event) {
+        event.preventDefault();
+        console.log('hola');
+        window.location.href = "/digitos";
+      }
+      backButton.addEventListener('click', handleBackButtonClick);
+    </script>
+
+    <script src="{{ jquery }}"></script>
+    <script src="{{ codigo }}"></script>
+    <script src="{{ redirect }}"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </body>
+</html>

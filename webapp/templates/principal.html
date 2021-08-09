@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <title>Interfaz ML - Rodrigo Leo</title>
+  <link rel="stylesheet" href="{{ estilo }}">
+  </head>
+  <body>
+    <h1>Interfaz ML</h1>
+    <p class="nombre">Rodrigo Leo, 2021 (<a href="https://github.com/r-leo/proyecto-python" target="_blank">GitHub</a>)</p>
+
+    <h2>Entrada</h2>
+
+    <p>Escribe un dígito (del cero al nueve) en el recuadro. Al presionar "Procesar", la imagen se traducirá en una matriz de píxeles para ser interpretada por el ensamble que programamos.</p>
+
+    <div id="container" class="container">
+      <div id='cargando'>
+        <p></p>
+        <p>Espera un momento...</p>
+      </div>
+      <canvas id="drawing-area" class="drawing-area" height="100" width="100"></canvas>
+      <div style="display: flex; flex-direction: row;">
+        <button id="clear-button" class="limpiar" type="button">Borrar</button>
+        <button id="process-button" class="procesar" type="button">Procesar</button>
+      </div>
+    </div>
+
+    <script src="{{ jquery }}"></script>
+    <script src="{{ codigo }}"></script>
+    <script src="{{ redirect }}"></script>
+
+  </body>
+</html>

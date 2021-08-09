@@ -1,0 +1,5 @@
+.DateInput_input, .DateInput_input_1 {
+  font-size: inherit;  /*or whatever size you would like to have*/
+  width: 100%;
+  padding: 4px;
+}
