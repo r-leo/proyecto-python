@@ -1,9 +1,13 @@
 import requests
 import os
 
-# Token:
-username = 'rleo'
-token = '526c9e4e60d819e69177fce2b6e6459dcecf2370'
+# Importar token para la API de PythonAnywhere:
+from token import username as un
+from token import token as tk
+
+# Credenciales para la API:
+username = un
+token = tk
 domain_name = 'rleo.pythonanywhere.com'
 
 # Variable de ruta:
