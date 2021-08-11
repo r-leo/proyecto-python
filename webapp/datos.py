@@ -70,12 +70,13 @@ tamano_dict = {
 app_datos = dash.Dash(
     __name__,
     requests_pathname_prefix = '/datos/',
+    external_scripts = [{'src': 'https://www.googletagmanager.com/gtag/js?id=G-G23WSB0F89', 'async': True}],
     external_stylesheets = [dbc.themes.FLATLY]
 )
 
 # Importar layout y cargarla en la instancia de la app:
 from datos_layout import layout
-app_datos.layout = layout(fecha_min, fecha_max)
+app_datos.layout = layout(fecha_min, fecha_max, len(data), len(data.columns))
 
 @app_datos.callback(
     Output("modal", "is_open"),

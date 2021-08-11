@@ -3,7 +3,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from pandas import to_datetime
 
-def layout(fecha_min, fecha_max):
+def layout(fecha_min, fecha_max, filas, columnas):
 
     texto_markdown = """
     **Visualización de datos globales sobre COVID-19**
@@ -30,7 +30,7 @@ def layout(fecha_min, fecha_max):
         ],
         id = 'modal',
         size = 'lg',
-        is_open = True
+        is_open = False
         ),
 
         dbc.Row(
@@ -42,7 +42,14 @@ def layout(fecha_min, fecha_max):
                     html.A('github.com/owid/covid-19-data', href = 'https://github.com/owid/covid-19-data', target = '_blank'),
                     html.Br(),
                     'Fecha más reciente en la base de datos: ',
-                    dbc.Badge(f'{to_datetime(fecha_max).date()}', color = 'info')
+                    dbc.Badge(f'{to_datetime(fecha_max).date()}', color = 'info'),
+                    html.Br(),
+                    'Tamaño de la base de datos: ',
+                    dbc.Badge(f'{"{:,}".format(filas)} filas', color = 'light'),
+                    ' x ',
+                    dbc.Badge(f'{"{:,}".format(columnas)} columnas', color = 'light'),
+                    ' = ',
+                    dbc.Badge(f'{"{:,}".format(filas * columnas)} datos', color = 'light'),
                 ]),
                 dbc.Button("Acerca de este proyecto", id="abrir", n_clicks = 0, outline = True, color = 'info')
             ])
