@@ -71,7 +71,27 @@ app_datos = dash.Dash(
     __name__,
     requests_pathname_prefix = '/datos/',
     external_scripts = [{'src': 'https://www.googletagmanager.com/gtag/js?id=G-G23WSB0F89', 'async': True}],
-    external_stylesheets = [dbc.themes.FLATLY]
+    external_stylesheets = [dbc.themes.FLATLY],
+	meta_tags = [
+		{
+			'property': 'og:title',
+			'content': 'Visualizador interactivo COVID-19'
+		},
+		{
+			'name': 'image',
+			'property': 'og:image',
+			'content': 'http://rleo.pythonanywhere.com/datos/assets/vistaprevia.jpg'
+			},
+			{
+			'name': 'description',
+			'property': 'og:description',
+			'content': 'Visualizador en tiempo real del estado global de la pandemia del coronavirus. Escrito en Python con Dash, Pandas y Flask.'
+			},
+			{
+			'name': 'author',
+			'content': 'Rodrigo Leo'
+			}
+	]
 )
 
 # Importar layout y cargarla en la instancia de la app:
